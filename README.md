@@ -1,16 +1,6 @@
-# HP Inventory Pro
+# BraderPart - Sistem Manajemen Stok Barang
 
-Modern inventory management dashboard for HP and device inventory, built as a single-page app with dark mode, localStorage persistence, transaction tracking, and export/import features.
-
-## Features
-- Dashboard overview
-- Device inventory list
-- User/employee management
-- Department management
-- Transaction log
-- Dark mode toggle
-- JSON export / restore
-- Responsive layout
+Modern inventory management dashboard with dark mode, employee management, department tracking, transaction log, and JSON backup/restore.
 
 ## Run locally
 1. Open the project folder.
@@ -18,18 +8,29 @@ Modern inventory management dashboard for HP and device inventory, built as a si
    ```bash
    python -m http.server 8000
    ```
-3. Open in the browser:
+3. Open in browser:
    ```text
    http://localhost:8000
    ```
+
+## Build to Windows EXE
+1. Double-click `build.bat`
+2. Wait until the build completes
+3. A file will be generated in `dist/BraderPart.exe`
+4. Double-click `RUN.bat` to launch the app
+5. Optional: run `INSTALL.bat` to create a desktop shortcut
 
 ## Files
 - `index.html`
 - `style.css`
 - `app.js`
+- `server.py`
+- `build.py`
+- `build.bat`
+- `RUN.bat`
+- `INSTALL.bat`
 
 ## Notes
 - Data is stored in browser `localStorage` by default.
 - You can export/import JSON for backup and restore.
 - Dark mode is enabled by default.
-
