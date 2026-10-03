@@ -3,17 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HP Inventory Pro</title>
+    <title>BraderPart - Sistem Manajemen Stok</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar">
         <div class="brand">
-          <div class="brand-mark">HP</div>
+          <div class="brand-mark">BP</div>
           <div>
-            <h1>Inventory Pro</h1>
-            <small>Asset Control</small>
+            <h1>BraderPart</h1>
+            <small>Parts Management</small>
           </div>
         </div>
 
@@ -23,7 +23,7 @@
             <span>›</span>
           </button>
           <button class="nav-btn" data-page="devices">
-            <span class="nav-left"><span class="nav-icon">📱</span> Unit HP</span>
+            <span class="nav-left"><span class="nav-icon">📦</span> Stok Barang</span>
             <span>›</span>
           </button>
           <button class="nav-btn" data-page="users">
@@ -86,10 +86,10 @@
         <section id="page-devices" class="page hidden">
           <div class="panel">
             <div class="panel-header">
-              <h3>Unit HP</h3>
+              <h3>Stok Barang</h3>
               <div class="toolbar">
-                <input id="deviceSearch" type="search" placeholder="Cari barcodes / brand / model..." />
-                <button class="primary-btn" id="addDeviceBtn">+ Tambah Unit</button>
+                <input id="deviceSearch" type="search" placeholder="Cari SKU / merk / model..." />
+                <button class="primary-btn" id="addDeviceBtn">+ Tambah Barang</button>
               </div>
             </div>
             <div id="devicesTable"></div>
@@ -101,7 +101,7 @@
             <div class="panel-header">
               <h3>Karyawan</h3>
               <div class="toolbar">
-                <input id="userSearch" type="search" placeholder="Cari nama / kode user..." />
+                <input id="userSearch" type="search" placeholder="Cari nama / kode karyawan..." />
                 <button class="primary-btn" id="addUserBtn">+ Tambah Karyawan</button>
               </div>
             </div>
@@ -126,7 +126,7 @@
             <div class="panel-header">
               <h3>Transaksi</h3>
               <div class="toolbar">
-                <input id="transactionSearch" type="search" placeholder="Cari transaksi / orang / device..." />
+                <input id="transactionSearch" type="search" placeholder="Cari transaksi / orang / barang..." />
                 <button class="primary-btn" id="addTransactionBtn">+ Tambah Transaksi</button>
               </div>
             </div>
