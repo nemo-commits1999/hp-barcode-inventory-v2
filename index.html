@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HP Inventory Pro</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">HP</div>
+          <div>
+            <h1>Inventory Pro</h1>
+            <small>Asset Control</small>
+          </div>
+        </div>
+
+        <nav class="nav">
+          <button class="nav-btn active" data-page="dashboard">
+            <span class="nav-left"><span class="nav-icon">⌂</span> Dashboard</span>
+            <span>›</span>
+          </button>
+          <button class="nav-btn" data-page="devices">
+            <span class="nav-left"><span class="nav-icon">📱</span> Unit HP</span>
+            <span>›</span>
+          </button>
+          <button class="nav-btn" data-page="users">
+            <span class="nav-left"><span class="nav-icon">👥</span> Karyawan</span>
+            <span>›</span>
+          </button>
+          <button class="nav-btn" data-page="departments">
+            <span class="nav-left"><span class="nav-icon">🏢</span> Departemen</span>
+            <span>›</span>
+          </button>
+          <button class="nav-btn" data-page="transactions">
+            <span class="nav-left"><span class="nav-icon">🧾</span> Transaksi</span>
+            <span>›</span>
+          </button>
+          <button class="nav-btn" data-page="settings">
+            <span class="nav-left"><span class="nav-icon">⚙️</span> Pengaturan</span>
+            <span>›</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-card">
+          <p class="mini-label">Status data</p>
+          <div class="mini-value">Local storage aktif</div>
+        </div>
+      </aside>
+
+      <main class="main-panel">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow" id="pageEyebrow">Overview</p>
+            <h2 id="pageTitle">Dashboard</h2>
+          </div>
+
+          <div class="top-actions">
+            <button class="ghost-btn" id="themeToggleBtn">🌙</button>
+            <button class="ghost-btn" id="exportBtn">Export JSON</button>
+            <button class="primary-btn" id="addPrimaryBtn">+ Tambah Data</button>
+          </div>
+        </header>
+
+        <section id="page-dashboard" class="page active">
+          <div class="stats-grid" id="statsGrid"></div>
+          <div class="content-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Ringkasan status</h3>
+              </div>
+              <div id="statusSummary"></div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Aktivitas terbaru</h3>
+              </div>
+              <div class="activity-list" id="recentActivity"></div>
+            </div>
+          </div>
+        </section>
+
+        <section id="page-devices" class="page hidden">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Unit HP</h3>
+              <div class="toolbar">
+                <input id="deviceSearch" type="search" placeholder="Cari barcodes / brand / model..." />
+                <button class="primary-btn" id="addDeviceBtn">+ Tambah Unit</button>
+              </div>
+            </div>
+            <div id="devicesTable"></div>
+          </div>
+        </section>
+
+        <section id="page-users" class="page hidden">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Karyawan</h3>
+              <div class="toolbar">
+                <input id="userSearch" type="search" placeholder="Cari nama / kode user..." />
+                <button class="primary-btn" id="addUserBtn">+ Tambah Karyawan</button>
+              </div>
+            </div>
+            <div id="usersTable"></div>
+          </div>
+        </section>
+
+        <section id="page-departments" class="page hidden">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Departemen</h3>
+              <div class="toolbar">
+                <button class="primary-btn" id="addDepartmentBtn">+ Tambah Departemen</button>
+              </div>
+            </div>
+            <div id="departmentsTable"></div>
+          </div>
+        </section>
+
+        <section id="page-transactions" class="page hidden">
+          <div class="panel">
+            <div class="panel-header">
+              <h3>Transaksi</h3>
+              <div class="toolbar">
+                <input id="transactionSearch" type="search" placeholder="Cari transaksi / orang / device..." />
+                <button class="primary-btn" id="addTransactionBtn">+ Tambah Transaksi</button>
+              </div>
+            </div>
+            <div id="transactionsTable"></div>
+          </div>
+        </section>
+
+        <section id="page-settings" class="page hidden">
+          <div class="settings-grid">
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Data & backup</h3>
+              </div>
+              <div class="settings-actions">
+                <button class="primary-btn" id="backupBtn">Backup JSON</button>
+                <label class="ghost-btn file-upload">
+                  <input type="file" id="restoreInput" accept=".json,application/json" />
+                  Restore JSON
+                </label>
+              </div>
+              <div class="settings-note" id="backupInfo">Backup dan restore data dari file JSON.</div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-header">
+                <h3>Tampilan</h3>
+              </div>
+              <div class="theme-toggle-row">
+                <span>Dark mode</span>
+                <button class="switch-btn" id="themeSwitch" aria-label="Toggle dark mode">
+                  <span class="switch-thumb"></span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <div id="modalBackdrop" class="modal-backdrop hidden">
+      <div class="modal">
+        <div class="modal-header">
+          <h3 id="modalTitle">Judul</h3>
+          <button class="icon-btn" id="closeModalBtn">✕</button>
+        </div>
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
